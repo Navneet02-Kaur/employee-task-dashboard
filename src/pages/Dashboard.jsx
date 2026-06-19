@@ -36,6 +36,22 @@ function Dashboard() {
     newTask
   ]);
 };
+
+const [editingTask, setEditingTask] = useState(null);
+// console.log(editingTask); 
+const updateTask = (updatedTask) => {
+  const updatedTasks = tasks.map((task) => {
+    if (task.id === updatedTask.id) {
+      return updatedTask;
+    }
+
+    return task;
+  });
+
+  setTasks(updatedTasks);
+  setEditingTask(null);
+};
+
 const completeTask = (taskId) => {
   const updatedTasks = tasks.map((task) => {
     if (task.id === taskId) {
@@ -83,6 +99,11 @@ const filteredTasks = tasks.filter((task) => {
   return matchesSearch;
 });
 
+const editTask = (task) => {
+  
+  setEditingTask(task);
+};
+
 const deleteTask = (taskId) => {
   const updatedTasks = tasks.filter(
     (task) => task.id !== taskId
@@ -104,7 +125,7 @@ const deleteTask = (taskId) => {
   filter={filter}
   setFilter={setFilter}
 />
-      <TaskForm addTask={addTask} />
+      <TaskForm addTask={addTask}   updateTask={updateTask}  editingTask={editingTask} />
       
       {filteredTasks.map((task) => (
         <TaskCard
@@ -117,6 +138,7 @@ const deleteTask = (taskId) => {
           dueDate={task.dueDate}
           onComplete={completeTask}
           onDelete={deleteTask}
+          onEdit={editTask}
         />
       ))}
     </>

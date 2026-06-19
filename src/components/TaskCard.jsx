@@ -1,4 +1,4 @@
-function TaskCard({ title, description, priority, status, dueDate, onComplete, id , onDelete }) {
+function TaskCard({ title, description, priority, status, dueDate, onComplete, id , onDelete, onEdit }) {
   return (
     <div className="container mt-4">
       <div className="card">
@@ -22,9 +22,21 @@ function TaskCard({ title, description, priority, status, dueDate, onComplete, i
             <strong>Due Date:</strong> {dueDate}
           </p>
 
-          <button className="btn btn-warning me-2">
-            Edit
-          </button>
+          <button
+  className="btn btn-warning me-2"
+  onClick={() =>
+    onEdit({
+      id,
+      title,
+      description,
+      priority,
+      status,
+      dueDate
+    })
+  }
+>
+  Edit
+</button>
 
           <button
   className="btn btn-danger me-2"

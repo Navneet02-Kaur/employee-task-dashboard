@@ -1,21 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function TaskForm({addTask}) {
+function TaskForm({addTask, updateTask, editingTask}) {
     const [title, setTitle] = useState("");
 const [description, setDescription] = useState("");
 const [priority, setPriority] = useState("High");
 const [dueDate, setDueDate] = useState("");
-const handleSubmit = () => {
-  const newTask = {
-    id: Date.now(),
-    title,
-    description,
-    priority,
-    status: "Pending",
-    dueDate
-  };
 
-  addTask(newTask);
+useEffect(() => {
+  if (editingTask) {
+    setTitle(editingTask.title);
+    setDescription(editingTask.description);
+    setPriority(editingTask.priority);
+    setDueDate(editingTask.dueDate);
+  }
+}, [editingTask]);
+
+
+const handleSubmit = () => {
+
+  if (editingTask) {
+
+    updateTask({
+      ...editingTask,
+      title,
+      description,
+      priority,
+      dueDate
+    });
+
+  } else {
+
+    const newTask = {
+      id: Date.now(),
+      title,
+      description,
+      priority,
+      status: "Pending",
+      dueDate
+    };
+
+    addTask(newTask);
+  }
 };
 
 return (
@@ -24,8 +49,13 @@ return (
         <div className="card-body">
 
           <h3>Add New Task</h3>
+          <h5>
+  {editingTask ? editingTask.title : "No Task Selected"}
+</h5>
+          
 
           <div className="mb-3">
+            
             <label className="form-label">
               Task Title
             </label>
@@ -76,9 +106,13 @@ return (
           </div>
 
 <h5>{title}</h5>
-          <button className="btn btn-primary" onClick={() => handleSubmit()}>
-            Add Task
-          </button>
+
+          <button
+  className="btn btn-primary"
+  onClick={() => handleSubmit()}
+>
+  {editingTask ? "Update Task" : "Add Task"}
+</button>
 
         </div>
       </div>
