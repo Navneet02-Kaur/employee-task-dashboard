@@ -7,7 +7,7 @@ function Navbar() {
         </span>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

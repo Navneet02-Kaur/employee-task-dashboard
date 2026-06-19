@@ -111,9 +111,11 @@ const deleteTask = (taskId) => {
 
   setTasks(updatedTasks);
 };
+
   return (
     <>
-      <Navbar />
+      <Navbar
+/>
       <DashboardStats
   totalTasks={tasks.length}
   completedTasks={completedTasks}
