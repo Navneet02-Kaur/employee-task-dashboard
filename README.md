@@ -174,3 +174,6 @@ React.js Project – Employee Task Management Dashboard
 
 Project Deployed on Vercel
 https://employee-task-dashboard-iota.vercel.app/
+
+<img width="935" height="907" alt="image" src="https://github.com/user-attachments/assets/4b749c49-3112-4c3d-89fe-e4b61154611a" />
+
