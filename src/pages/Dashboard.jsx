@@ -13,22 +13,22 @@ function Dashboard() {
   return savedTasks
     ? JSON.parse(savedTasks)
     : [
-        {
-          id: 1,
-          title: "Create Monthly Report",
-          description: "Prepare and submit the monthly sales report.",
-          priority: "High",
-          status: "Pending",
-          dueDate: "25 June 2026"
-        },
-        {
-          id: 2,
-          title: "Employee Dashboard",
-          description: "Build React Employee Dashboard.",
-          priority: "Medium",
-          status: "Pending",
-          dueDate: "30 June 2026"
-        }
+        // {
+        //   id: 1,
+        //   title: "Create Monthly Report",
+        //   description: "Prepare and submit the monthly sales report.",
+        //   priority: "High",
+        //   status: "Pending",
+        //   dueDate: "25 June 2026"
+        // },
+        // {
+        //   id: 2,
+        //   title: "Employee Dashboard",
+        //   description: "Build React Employee Dashboard.",
+        //   priority: "Medium",
+        //   status: "Pending",
+        //   dueDate: "30 June 2026"
+        // }
       ];
 });
   const [searchTerm, setSearchTerm] = useState("");
